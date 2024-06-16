@@ -1,10 +1,11 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Model
-import tensorflow as tf
+from tensorflow.keras.preprocessing import image
 
 # Chemins à adapter
 data_dir = r"C:\Users\Marc\Pictures\Pokemon\Data"
@@ -138,6 +139,7 @@ def load_and_preprocess_image(img_path, img_height, img_width):
     img = image.load_img(img_path, target_size=(img_height, img_width))
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
+    img_array = img_array / 255.0  # Normaliser l'image
     return img_array
 
 # Faire une prédiction
