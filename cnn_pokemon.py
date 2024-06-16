@@ -143,11 +143,15 @@ def load_and_preprocess_image(img_path, img_height, img_width):
     return img_array
 
 # Faire une prédiction
-def predict_image(model, img_array, class_names):
+def predict_image(model, img_array, class_names, display):
     predictions = model.predict(img_array)
     output = np.argmax(predictions[0])
     proba = predictions[0][output]
+    # Display permet d'afficher une phrase annonçant la classe prédite
+    if display == 1:
+        print("C'est un " + class_names[output] + " ! (" + str(round(proba*100,1)) + "%)")
     return class_names[output], proba
+
   
 ############### Affichage ###############
 
