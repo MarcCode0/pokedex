@@ -2,6 +2,7 @@
 
 # Introduction
 Projet de classification supervisée des pokémons à base de deep learning
+Nombre actuel de classes : 20
 
 # Bibliothèques et Dépendances
 Les bibliothèques suivantes sont nécessaires pour exécuter ce projet :
@@ -26,4 +27,5 @@ Le dossier Data contient les données utilisées pour l'entraînement et la vali
 Le dossier Test contient les données utilisées pour la phase de test (100 images).
 
 # Path
-Il est conseillé, pour éviter des problèmes, de mettre tous les chemins en dur dans le code. Exemple : data_dir = r"C:\Users\Marc\Pictures\Pokemon\Data".
+Il est conseillé, pour éviter des problèmes, de mettre tous les chemins en dur dans le code
+Exemple : data_dir = r"C:\Users\Marc\Pictures\Pokemon\Data".
