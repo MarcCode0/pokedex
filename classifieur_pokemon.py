@@ -12,8 +12,8 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
 
 # Configuration
-data_dir = r"C:\Users\leoni\Documents\Data"
-# data_dir = r"C:\Users\Marc\Pictures\Pokemon\Data"
+# Chemin à adapter
+data_dir = r"C:\Users\Marc\Pictures\Pokemon\Data"
 # val_dir = r"C:\Users\Marc\Pictures\Pokemon\Data"
 num_classes = 20  # nombre de classes Pokémon
 batch_size = 32
