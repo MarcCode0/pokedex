@@ -1,4 +1,4 @@
-# pokedex
+# Projet Pokedex
 
 # Introduction
 Projet de classification supervisée des pokémons à base de deep learning
@@ -13,6 +13,10 @@ Les bibliothèques suivantes sont nécessaires pour exécuter ce projet :
 - `os`
 
 La version python utilisée doit être compatible avec Tensorflow. La version utilisée pour ce projet est python 3.8.
+
+# Fichiers Python
+- cnn_pokemon.py est un CNN assez simple
+- classifieur_resnet_pokemon.py utilise le transfer learning avec ResNet-101
 
 # Dataset
 Le dossier Data contient les données utilisées pour l'entraînement et la validation (20 x 100 images).
