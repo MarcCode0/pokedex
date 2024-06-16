@@ -6,11 +6,9 @@ from tensorflow.keras import layers
 from tensorflow.keras.models import Model
 import tensorflow as tf
 
-# data_dir = r"C:\Users\Marc\Pictures\Pokemon\Data"
-# val_dir = r"C:\Users\Marc\Pictures\Pokemon\Data"
-
-data_dir = r"C:\Users\leoni\Documents\Data2"
-val_dir = r"C:\Users\leoni\Documents\Data2"
+# Chemins à adapter
+data_dir = r"C:\Users\Marc\Pictures\Pokemon\Data"
+val_dir = r"C:\Users\Marc\Pictures\Pokemon\Data"
 
 batch_size = 8
 img_height = 256
@@ -35,25 +33,10 @@ val_data = tf.keras.preprocessing.image_dataset_from_directory(
 
 # nom des classes
 class_names = train_data.class_names
-
-# modèle
 num_classes = len(class_names)
 
-#model = tf.keras.Sequential([
-#    layers.experimental.preprocessing.Rescaling(1./255),
-#    layers.Conv2D(128,4, activation='relu'),
-#    layers.MaxPooling2D(),
-#    layers.Conv2D(64,4, activation='relu'),
-#    layers.MaxPooling2D(),
-#    layers.Conv2D(32,4, activation='relu'),
-#    layers.MaxPooling2D(),
-#    layers.Conv2D(16,4, activation='relu'),
-#    layers.MaxPooling2D(),
-#    layers.Flatten(),
-#    layers.Dense(64,activation='relu'),
-#    layers.Dense(num_classes, activation='softmax')
-#])
-
+############### Modèle ###############
+## Modèle croissant
 #model = tf.keras.Sequential([
 #    layers.experimental.preprocessing.Rescaling(1./255),
 #    layers.Conv2D(8, 3, activation='relu', padding='same'),
@@ -89,6 +72,7 @@ num_classes = len(class_names)
 #    layers.Dense(num_classes, activation='softmax')
 #])
 
+## Modèle décroissant
 model = tf.keras.Sequential([
     layers.experimental.preprocessing.Rescaling(1./255),
     # layers.Conv2D(256, 3, activation='relu', padding='same'),
@@ -139,6 +123,30 @@ history = model.fit(
   callbacks=[tensorboard_callback]
 )
 
+############### Save model ###############
+
+# Sauvegarder le modèle
+# model.save('model_cnn')
+
+# Charger le modèle
+# my_model = tf.keras.models.load_model('model_cnn')
+
+############### Test model ###############
+
+# Charger et prétraiter l'image
+def load_and_preprocess_image(img_path, img_height, img_width):
+    img = image.load_img(img_path, target_size=(img_height, img_width))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    return img_array
+
+# Faire une prédiction
+def predict_image(model, img_array, class_names):
+    predictions = model.predict(img_array)
+    output = np.argmax(predictions[0])
+    proba = predictions[0][output]
+    return class_names[output], proba
+  
 ############### Affichage ###############
 
 # Données d'accuracy et de loss
