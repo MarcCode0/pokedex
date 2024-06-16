@@ -17,6 +17,9 @@ La version python utilisée doit être compatible avec Tensorflow. La version ut
 # Fichiers Python
 - cnn_pokemon.py est un CNN assez simple
 - classifieur_resnet_pokemon.py utilise le transfer learning avec ResNet-101
+Un modèle (architecture et poids) obtenu après transfer learning avec ResNet est présent sous de formes :
+- un fichier HDF5 'model_resnet101_20class.h5'
+- un dossier 'model_resnet101_20class' correspondant au format pas défaut utilisé par keras pour ces modèles
 
 # Dataset
 Le dossier Data contient les données utilisées pour l'entraînement et la validation (20 x 100 images).
